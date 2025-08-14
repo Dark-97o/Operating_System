@@ -1,28 +1,39 @@
-// fcfs with all processes with 0 arrival time
 #include <stdio.h>
 
 int main() {
-    int processes[5] = {1, 2, 3, 4, 5};
-    int bt[5] = {4, 3, 1, 2, 5};
-    int wt[5], tat[5];
-    float avg_wt = 0, avg_tat = 0;
+    int n;
+    printf("Enter number of processes: ");
+    scanf("%d", &n);
 
-    wt[0] = 0;
-
-    for (int i = 1; i < 5; i++) {
-        wt[i] = wt[i - 1] + bt[i - 1];
-
-    for (int i = 0; i < 5; i++) {
-        tat[i] = wt[i] + bt[i];
+    int at[n], bt[n], ct[n], tat[n], wt[n];
+    int i;
+    printf("Enter Values:\n");
+    for (i = 0; i < n; i++) {
+        printf("Arrival Time P%d: ", i + 1);
+        scanf("%d", &at[i]);
+        printf("Burst Time P%d:",i+1);
+        scanf("%d", &bt[i]);
     }
 
-    printf("P\tBT\tWT\tTAT\n");
-    for (int i = 0; i < 5; i++) {
-        printf("%d\t%d\t%d\t%d\n", processes[i], bt[i], wt[i], tat[i]);
-        avg_wt += wt[i];
-        avg_tat += tat[i];
+    // FCFS scheduling
+    int time = 0;
+    for (i = 0; i < n; i++) {
+        if (time < at[i])
+            time = at[i];
+        ct[i] = time + bt[i];
+        tat[i] = ct[i] - at[i];
+        wt[i] = tat[i] - bt[i];
+        time = ct[i];
+    }          
+    float tat_avg = 0 , wt_avg = 0;
+    for(int i = 0; i < n; i++){
+        tat_avg += tat[i];
+        wt_avg += wt[i];
     }
-    printf("\nAverage WT = %.2f", avg_wt / 5);
-    printf("\nAverage TAT = %.2f\n", avg_tat / 5);
+    printf("\nP\tAT\tBT\tCT\tTAT\tWT\n");
+    for (i = 0; i < n; i++) {
+        printf("P%d\t%d\t%d\t%d\t%d\t%d\n", i + 1, at[i], bt[i], ct[i], tat[i], wt[i]);
+    }
+    printf("\nTurn around time Average:  %.2f \nWaiting Time Average: %.2f" , tat_avg /= n ,  wt_avg /= n);
     return 0;
 }
