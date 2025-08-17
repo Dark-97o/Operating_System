@@ -8,16 +8,19 @@ int main() {
     int at[n], bt[n], ct[n], tat[n], wt[n], done[n];
     int job_ord[n];
     for (int i = 0; i < n; i++) {
-        printf("Process %d arrival and burst time: ", i + 1);
-        scanf("%d %d", &at[i], &bt[i]);
+        printf("Arrival Time P%d: ", i + 1);
+        scanf("%d", &at[i]);
+        printf("Burst Time P%d:",i+1);
+        scanf("%d", &bt[i]);
         done[i] = 0;
         job_ord[i] = i + 1;
+        printf("----------------------------\n");
     }
     for (int i = 0; i < n; i++){
         for (int j = i + 1; j < n; j++){
             if(bt[i] > bt[j]){
                 int temp = bt[i];
-                bt[i] = bt[j];
+                bt[i] = bt[j]; 
                 bt[j] = temp;
 
                 int ord_temp = job_ord[i];
