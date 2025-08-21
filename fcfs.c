@@ -7,7 +7,7 @@ int main() {
 
     int at[n], bt[n], ct[n], tat[n], wt[n];
     int i;
-    printf("Enter Values:\n");
+    printf("Enter Values\n");
     for (i = 0; i < n; i++) {
         printf("Arrival Time P%d: ", i + 1);
         scanf("%d", &at[i]);
