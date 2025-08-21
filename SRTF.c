@@ -3,6 +3,7 @@
 
 int main() {
     int n;
+    float avg_tat = 0, avg_wt = 0;
     printf("Enter number of processes: ");
     scanf("%d", &n);
 
@@ -38,6 +39,7 @@ int main() {
             ct[shortest] = finish_time;
             wt[shortest] = finish_time - bt[shortest] - at[shortest];
             if (wt[shortest] < 0) wt[shortest] = 0;
+            
         }
         time++;
     }
@@ -45,10 +47,10 @@ int main() {
     printf("\nP\tAT\tBT\tCT\tTAT\tWT\n");
     for (int i=0; i<n; i++) {
         tat[i] = ct[i] - at[i];
+        avg_tat = avg_tat + tat[i];
+        avg_wt += wt[i];
         printf("P%d\t%d\t%d\t%d\t%d\t%d\n", i+1, at[i], bt[i], ct[i], tat[i], wt[i]);
     }
-    int avg_tat = avg_tat/n;
-    int avg_wt = avg_wt/n;
-    printf("\nAverage Turnaround Time = %.2f", avg_tat);
-    printf("\nAverage Waiting Time    = %.2f\n", avg_wt);
+    printf("\nAverage Turnaround Time = %.2f", avg_tat/n);
+    printf("\nAverage Waiting Time    = %.2f\n", avg_wt/n);
 }
