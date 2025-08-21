@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    int n, tq;
+    int n;
     printf("Enter number of processes: ");
     scanf("%d", &n);
 
@@ -11,8 +11,6 @@ int main() {
         scanf("%d %d", &at[i], &bt[i]);
         rt[i] = bt[i];
     }
-    printf("Enter Time Quantum: ");
-    scanf("%d", &tq);
 
     int time = 0, complete = 0, done;
     while (complete < n) {

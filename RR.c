@@ -43,7 +43,7 @@ int main() {
     }
     int avg_tat = avg_tat/n;
     int avg_wt = avg_wt/n;
-
     printf("\nAverage Turnaround Time = %.2f", avg_tat);
     printf("\nAverage Waiting Time    = %.2f\n", avg_wt);
+
 }
