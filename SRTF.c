@@ -47,4 +47,8 @@ int main() {
         tat[i] = ct[i] - at[i];
         printf("P%d\t%d\t%d\t%d\t%d\t%d\n", i+1, at[i], bt[i], ct[i], tat[i], wt[i]);
     }
+       int avg_tat = avg_tat/n;
+    int avg_wt = avg_wt/n;
+    printf("\nAverage Turnaround Time = %.2f", avg_tat);
+    printf("\nAverage Waiting Time    = %.2f\n", avg_wt);
 }
