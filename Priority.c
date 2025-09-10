@@ -33,7 +33,7 @@ int main() {
         avg_wt+=wt[idx];
         done[idx]=1;
         complete++;
-    }
+    } 
 
     printf("\nP\tAT\tBT\tPR\tCT\tTAT\tWT\n");
     for(int i=0;i<n;i++)
